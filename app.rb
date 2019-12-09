@@ -10,7 +10,7 @@ def cache!
   end
 end
 
-REDDIT = Redd.it(user_agent: "Redd:FloridaMan:19.8.10 (by /u/#{ENV['REDDIT_USERNAME']})", client_id: ENV['REDDIT_CLIENTID'], secret: ENV['REDDIT_SECRETID'], username: ENV['REDDIT_USERNAME'], password: ENV['REDDIT_PASSWORD'])
+REDDIT = Redd.it(user_agent: "Redd:FloridaMan:19.8.10 (by /u/#{ENV['FLORIDA_MAN_USERNAME']})", client_id: ENV['FLORIDA_MAN_CLIENTID'], secret: ENV['FLORIDA_MAN_SECRETID'], username: ENV['FLORIDA_MAN_USERNAME'], password: ENV['FLORIDA_MAN_PASSWORD'])
 FLORIDA_MAN_REGEX = /^florida man/i
 Thread.new(REDDIT) do |session|
   session.subreddit('FloridaMan').post_stream.each do |post|
@@ -21,7 +21,7 @@ Thread.new(REDDIT) do |session|
   end
 end
 
-BOT = Discordrb::Bot.new(token: ENV['DISCORD_TOKEN'])
+BOT = Discordrb::Bot.new(token: ENV['FLORIDA_MAN_TOKEN'])
 BOT.mention do |event|
   event.respond("_#{cache!}_")
   event.message.delete
